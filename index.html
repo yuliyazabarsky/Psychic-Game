@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title> Psychic Game</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="images" href="assets/images">
+    <!-- <sc <ript src="assets/javascript/game.js"></script> -->
+
+</head>
+
+<body>
+
+    <h1> Psychic Game</h1>
+    <hr>
+
+
+
+
+    <h3> Guess what letter I'm thinking of </h3>
+
+
+
+
+
+    <!-- <h4>Wins: </h4>
+    <h4 id="yourchoice-text"></h4>
+    <h4>Losses: </h4>
+    <h4>yourguessessofa.textContent = "Your guesses so far: </h4>
+    <h4>guessesleftText.textContent = "Guesses left: " </h4> -->
+    <div>
+
+        <!-- <p id="yourchoice-text"></p> -->
+        <p id="computerchoice-text"></p>
+        <p id="wins-text"></p>
+        <p id="losses-text"></p>
+        <p id="guessesleft-text"></p>
+        <p id="yourguessessofar-text"></p>
+
+
+    </div>
+
+
+
+    <script type="text/javascript">
+        var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r",
+            "s", "t", "u", "v", "w", "x", "y", "z"
+        ];
+
+        // Creating variables to hold the number of wins, losses. They start at 0.
+        var wins = 0;
+        var losses = 0;
+        // Creating variable for guesses left and an empty array for user choises. 
+        var guessesleft = 9;
+        var letters = [];
+
+
+
+        // var yourChoiceText = document.getElementById("yourchoice-text");
+        var computerChoiceText = document.getElementById("computerchoice-text");
+        var winsText = document.getElementById("wins-text");
+        var lossesText = document.getElementById("losses-text");
+        var guessesleftText = document.getElementById("guessesleft-text");
+        var yourguessessofa = document.getElementById("yourguessessofar-text");
+
+
+        // function updateScore() {
+        //     document.getElementById("#wins").innerHTML = "Wins: " + wins;
+        // }
+
+
+        // // MAIN PROCESS
+        // // ==============================================================================
+
+        // // Calling functions to start the game.
+        // // renderQuestion();
+        // updateScore();
+
+
+
+        // This function is run whenever the user presses a key.
+        document.onkeyup = function (event) {
+
+            // Determines which key was pressed.
+            var yourGuess = event.key.toLowerCase();
+
+            // Randomly chooses a choice from the options array. This is the Computer's guess.
+            var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+
+
+            if (yourGuess === computerGuess) {
+                // letters.push(yourGuess);
+                wins++;
+                guessesleft = 9;
+                letters = [];
+
+
+            }
+
+            // this should run untill guessesleft = 0; 
+            else if (yourGuess !== computerGuess) {
+                letters.push(yourGuess);
+                guessesleft--;
+            }
+            if (guessesleft === 0) {
+                losses++;
+                letters = [];
+                guessesleft = 9;
+
+
+
+            }
+
+            console.log(computerGuess);
+
+            // Display user guesses,scores for wins and losses, guesses left
+
+            winsText.textContent = "Wins: " + wins;
+            lossesText.textContent = "Losses: " + losses;
+            yourguessessofa.textContent = "Your guesses so far: " + letters;
+            guessesleftText.textContent = "Guesses left: " + guessesleft;
+
+
+
+
+        };
+    </script>
+</body>
+
+</html>
