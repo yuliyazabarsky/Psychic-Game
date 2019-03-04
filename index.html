@@ -19,19 +19,8 @@
     <hr>
 
 
-
-
     <h3> Guess what letter I'm thinking of </h3>
 
-
-
-
-
-    <!-- <h4>Wins: </h4>
-    <h4 id="yourchoice-text"></h4>
-    <h4>Losses: </h4>
-    <h4>yourguessessofa.textContent = "Your guesses so far: </h4>
-    <h4>guessesleftText.textContent = "Guesses left: " </h4> -->
     <div>
 
         <!-- <p id="yourchoice-text"></p> -->
@@ -68,17 +57,10 @@
         var yourguessessofa = document.getElementById("yourguessessofar-text");
 
 
-        // function updateScore() {
-        //     document.getElementById("#wins").innerHTML = "Wins: " + wins;
-        // }
 
 
         // // MAIN PROCESS
         // // ==============================================================================
-
-        // // Calling functions to start the game.
-        // // renderQuestion();
-        // updateScore();
 
 
 
@@ -98,8 +80,6 @@
                 wins++;
                 guessesleft = 9;
                 letters = [];
-
-
             }
 
             // this should run untill guessesleft = 0; 
@@ -111,10 +91,8 @@
                 losses++;
                 letters = [];
                 guessesleft = 9;
-
-
-
             }
+            // checking computer guesses 
 
             console.log(computerGuess);
 
@@ -124,9 +102,6 @@
             lossesText.textContent = "Losses: " + losses;
             yourguessessofa.textContent = "Your guesses so far: " + letters;
             guessesleftText.textContent = "Guesses left: " + guessesleft;
-
-
-
 
         };
     </script>
