@@ -10,7 +10,6 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" type="images" href="assets/images">
     <!-- <sc <ript src="assets/javascript/game.js"></script> -->
-
 </head>
 
 <body>
@@ -19,7 +18,7 @@
     <hr>
 
 
-    <h3> Guess what letter I'm thinking of </h3>
+    <h2> Guess what letter I'm thinking of </h2>
 
     <div>
 
@@ -62,6 +61,16 @@
         // // MAIN PROCESS
         // // ==============================================================================
 
+        function restartGame() {
+            wins = 0;
+            losses = 0;
+            guessesleft = 9;
+            letters = [];
+            winsText.textContent = "Wins: " + wins;
+            lossesText.textContent = "Losses: " + losses;
+            yourguessessofa.textContent = "Your guesses so far: " + letters;
+            guessesleftText.textContent = "Guesses left: " + guessesleft;
+        }
 
 
         // This function is run whenever the user presses a key.
@@ -104,6 +113,7 @@
             guessesleftText.textContent = "Guesses left: " + guessesleft;
 
         };
+        restartGame();
     </script>
 </body>
 

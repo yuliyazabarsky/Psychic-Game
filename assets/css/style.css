@@ -1,3 +1,17 @@
 h1 {
     color: blueviolet;
 }
+
+hr {
+    border: solid 1px yellow;
+}
+
+div {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+body {
+    background-color: rosybrown;
+    text-align: center;
+}
