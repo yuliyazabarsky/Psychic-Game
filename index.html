@@ -5,6 +5,11 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
 
     <title> Psychic Game</title>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
@@ -13,24 +18,27 @@
 </head>
 
 <body>
+    <div class="jumbotron jumbotron-fluid" id="gameTitle">
+        <div class="container">
+            <h1 class="display-4"></h1>
+        </div>
+    </div>
 
-    <h1> Psychic Game</h1>
+    <!-- <h1> Psychic Game</h1>
+    <hr> -->
+
+
+    <h1>Guess what letter I'm thinking of? </h1>
     <hr>
-
-
-    <h2> Guess what letter I'm thinking of </h2>
-
-    <div>
-
+    <div class="display">
         <!-- <p id="yourchoice-text"></p> -->
         <p id="computerchoice-text"></p>
         <p id="wins-text"></p>
         <p id="losses-text"></p>
         <p id="guessesleft-text"></p>
         <p id="yourguessessofar-text"></p>
-
-
     </div>
+
 
 
 
@@ -45,6 +53,8 @@
         // Creating variable for guesses left and an empty array for user choises. 
         var guessesleft = 9;
         var letters = [];
+        // arr = letter.split[","];
+        // lastArr = arr[arr.lenth - 1];
 
 
 
@@ -75,10 +85,9 @@
 
         // This function is run whenever the user presses a key.
         document.onkeyup = function (event) {
-
+            event.preventDefault();
             // Determines which key was pressed.
             var yourGuess = event.key.toLowerCase();
-
             // Randomly chooses a choice from the options array. This is the Computer's guess.
             var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
@@ -95,6 +104,10 @@
             else if (yourGuess !== computerGuess) {
                 letters.push(yourGuess);
                 guessesleft--;
+                // if (yourGuess === letters.length[i - 1]) {
+                //     alert("Try again");
+                //     return;
+                // }
             }
             if (guessesleft === 0) {
                 losses++;
@@ -115,6 +128,13 @@
         };
         restartGame();
     </script>
+    <div>
+        <footer>
+            <div class="footer">
+                Copyright &copy; Yuliya Zabarsky
+            </div>
+        </footer>
+    </div>
 </body>
 
 </html>
