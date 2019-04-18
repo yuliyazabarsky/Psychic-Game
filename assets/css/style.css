@@ -13,20 +13,20 @@ div {
 
 body {
     background-color: bisque;
+    background-image: radial-gradient(bisque, white);
     text-align: center;
-    /* font-size: 30px; */
+    
 }
 
 .display {
     font-size: 30px;
-    /* color: rebeccapurple; */
 }
 
-#gameTitle {
+.jumbotron{
     height: 200px;
-    background-image: url("https://cdn.pixabay.com/photo/2016/08/23/23/11/scrabble-1615794__480.jpg");
-}
+    background-image: url("../images/scrabble.jpg");
 
+}
 .footer {
     position: fixed;
     left: 0;
@@ -35,8 +35,6 @@ body {
     height: 50px;
     padding-bottom: 5px;
     padding-top: 10px;
-    /* background-color: burlywood; */
-    /* color: #cccccc; */
     text-align: center;
     border-top: 2px solid burlywood;
     font-size: 15px;

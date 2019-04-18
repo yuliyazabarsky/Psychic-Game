@@ -27,9 +27,11 @@
     <!-- <h1> Psychic Game</h1>
     <hr> -->
 
-
+    
     <h1>Guess what letter I'm thinking of? </h1>
     <hr>
+    <br>
+    <br>
     <div class="display">
         <!-- <p id="yourchoice-text"></p> -->
         <p id="computerchoice-text"></p>
@@ -44,17 +46,15 @@
 
     <script type="text/javascript">
         var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r",
-            "s", "t", "u", "v", "w", "x", "y", "z"
-        ];
-
+            "s", "t", "u", "v", "w", "x", "y", "z"];
+        var userOptions = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q",
+                "r", "s", "t", "u", "v", "w", "x", "y", "z"];
         // Creating variables to hold the number of wins, losses. They start at 0.
         var wins = 0;
         var losses = 0;
         // Creating variable for guesses left and an empty array for user choises. 
         var guessesleft = 9;
         var letters = [];
-        // arr = letter.split[","];
-        // lastArr = arr[arr.lenth - 1];
 
 
 
@@ -64,14 +64,13 @@
         var lossesText = document.getElementById("losses-text");
         var guessesleftText = document.getElementById("guessesleft-text");
         var yourguessessofa = document.getElementById("yourguessessofar-text");
-
-
-
+        var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
         // // MAIN PROCESS
         // // ==============================================================================
 
         function restartGame() {
+            console.log("loaded");
             wins = 0;
             losses = 0;
             guessesleft = 9;
@@ -80,39 +79,44 @@
             lossesText.textContent = "Losses: " + losses;
             yourguessessofa.textContent = "Your guesses so far: " + letters;
             guessesleftText.textContent = "Guesses left: " + guessesleft;
+            computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
         }
 
 
         // This function is run whenever the user presses a key.
+       
         document.onkeyup = function (event) {
             event.preventDefault();
             // Determines which key was pressed.
             var yourGuess = event.key.toLowerCase();
             // Randomly chooses a choice from the options array. This is the Computer's guess.
-            var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+            // var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
-
-
-            if (yourGuess === computerGuess) {
+            if(userOptions.indexOf(yourGuess) === -1){
+                alert("Please enter a letter");
+            }
+            else if(yourGuess === computerGuess) {
                 // letters.push(yourGuess);
                 wins++;
+                if (wins === 10){
+                    restartGame();
+                }
                 guessesleft = 9;
                 letters = [];
+                computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
             }
 
             // this should run untill guessesleft = 0; 
             else if (yourGuess !== computerGuess) {
                 letters.push(yourGuess);
                 guessesleft--;
-                // if (yourGuess === letters.length[i - 1]) {
-                //     alert("Try again");
-                //     return;
-                // }
+                
             }
             if (guessesleft === 0) {
                 losses++;
                 letters = [];
                 guessesleft = 9;
+                computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
             }
             // checking computer guesses 
 
@@ -126,12 +130,14 @@
             guessesleftText.textContent = "Guesses left: " + guessesleft;
 
         };
+        console.log("about to start");
         restartGame();
     </script>
     <div>
         <footer>
             <div class="footer">
-                Copyright &copy; Yuliya Zabarsky
+                <!-- Copyright &copy; Yuliya Zabarsky -->
+                Created by Yuliya Zabarsky
             </div>
         </footer>
     </div>
